@@ -3,14 +3,13 @@ import type { NextPage } from 'next';
 import { Blog } from '../../interfaces/blog';
 import { blogPosts } from '../../lib/data';
 
-const BlogPage: NextPage<Blog> = ({ title, date, content}) => {
+const BlogPage: NextPage<Blog> = ({ title, content}) => {
 
   return (
       <div>
         <main>
-          <h1>{title}</h1>
+          <h2 className="text-2xl font-bold">{title}</h2>
           <div>{content}</div>
-          <p>{date}</p>
         </main>
       </div>
   );
