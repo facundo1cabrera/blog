@@ -8,7 +8,7 @@ const BlogPage: NextPage<Blog> = ({ title, content}) => {
   return (
       <div>
         <main>
-          <h2 className="text-2xl font-bold">{title}</h2>
+          <h2 className="text-2xl font-bold border-b-2 border-gray-200">{title}</h2>
           <div>{content}</div>
         </main>
       </div>
