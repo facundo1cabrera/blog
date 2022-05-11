@@ -5,7 +5,7 @@ import { Blog } from '../interfaces/blog';
 
 
 const Home: NextPage = () => {
-
+// lol
   return (
     <div>
 
