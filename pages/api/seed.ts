@@ -19,8 +19,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     await Blog.insertMany( seedData.posts );
 
-    console.log('no siembra');
-
     await db.disconnect();
 
     res.status(200).json({ message: 'Example' })

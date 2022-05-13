@@ -1,11 +1,17 @@
-import { blogPosts } from '../lib/data';
-import type { NextPage } from 'next';
-import Link from 'next/link';
+import type { GetStaticProps, NextPage } from 'next';
+import { postsApi } from '../apis'
 import { Blog } from '../interfaces/blog';
+import { BlogListItem } from '../components/BlogListItem';
 
 
-const Home: NextPage = () => {
-// lol
+
+const Home: NextPage<{blogPosts: Blog[]}> = ({ blogPosts }) => {
+
+
+
+
+  
+
   return (
     <div>
 
@@ -20,17 +26,16 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export const getStaticProps: GetStaticProps = async (ctx) => {
 
-function BlogListItem({ slug, title, content }: Blog) {
-  return (
-    <div className="border border-black-400 rounded p-4 hover:shadow-md hover:border-black-600 transition duration-500 ease-in-out">
-      <div>
-        <Link href={`/blog/${slug}`}>
-          <a className="font-bold">{title}</a>
-        </Link>
-      </div>
-      <div>{content}</div>
-    </div>
-  )
+  const blogPosts = await postsApi.get<Blog[]>('/blogs');
+
+  return {
+    props: {
+      blogPosts
+    }
+  }
 }
+
+
+export default Home;
